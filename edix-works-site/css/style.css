@@ -107,6 +107,10 @@ img {
   font-weight: 400;
 }
 
+.hero__mobile-break {
+  display: inline;
+}
+
 .section-heading {
   text-align: center;
 }
@@ -387,6 +391,10 @@ body.has-reveal main section.is-visible {
     margin-top: 16px;
     font-size: 12px;
     line-height: 1.8;
+  }
+
+  .hero__mobile-break {
+    display: block;
   }
 
   .section-heading h2 {
