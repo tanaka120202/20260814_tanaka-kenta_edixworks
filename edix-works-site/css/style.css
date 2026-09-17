@@ -18,7 +18,6 @@ html {
 
 body {
   margin: 0;
-  min-width: 907px;
   color: var(--text);
   background: #ffffff;
   font-family: "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
@@ -270,6 +269,10 @@ body.has-reveal main section.is-visible {
   line-height: 1;
 }
 
+.works__dots {
+  display: none;
+}
+
 .about {
   height: 339px;
   padding-top: 53px;
@@ -334,5 +337,200 @@ body.has-reveal main section.is-visible {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 500px;
+    aspect-ratio: auto;
+    background-position: center;
+  }
+
+  .hero__nav-wrap {
+    top: 18px;
+    left: 20px;
+    right: 20px;
+    display: block;
+  }
+
+  .site-logo {
+    font-size: 15px;
+  }
+
+  .global-nav {
+    margin-top: 14px;
+    gap: 12px;
+    font-size: 10px;
+  }
+
+  .global-nav__contact {
+    width: 70px;
+    height: 28px;
+    margin-left: 0;
+  }
+
+  .hero__content {
+    top: 52%;
+    right: 20px;
+    left: 20px;
+    width: auto;
+    transform: translateY(-50%);
+  }
+
+  .hero__content h1 {
+    font-size: clamp(30px, 9.5vw, 40px);
+    overflow-wrap: anywhere;
+  }
+
+  .hero__content p {
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .section-heading h2 {
+    font-size: 30px;
+  }
+
+  .service,
+  .works,
+  .about {
+    height: auto;
+  }
+
+  .service {
+    padding: 72px 24px;
+  }
+
+  .service-list {
+    width: 100%;
+    margin-top: 34px;
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .service-card h3 {
+    margin-top: 12px;
+  }
+
+  .service-card p {
+    max-width: 280px;
+    margin: 8px auto 0;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .works {
+    padding: 72px 0;
+  }
+
+  .works-grid {
+    width: 100%;
+    margin-top: 34px;
+    padding: 0 24px 12px;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 24px;
+    scrollbar-width: none;
+  }
+
+  .works-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work-card {
+    flex: 0 0 min(78vw, 300px);
+    scroll-snap-align: center;
+  }
+
+  .work-card__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .work-card h3 {
+    font-size: 14px;
+  }
+
+  .work-card__description {
+    font-size: 12px;
+  }
+
+  .work-card__tag {
+    font-size: 10px;
+  }
+
+  .works__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .works__dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #c7c7c7;
+    cursor: pointer;
+    transition: width 200ms ease, background-color 200ms ease;
+  }
+
+  .works__dot.is-active {
+    width: 22px;
+    border-radius: 999px;
+    background: var(--blue);
+  }
+
+  .works__dot:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+  }
+
+  .works__more {
+    margin-top: 32px;
+  }
+
+  .about {
+    padding: 72px 24px;
+  }
+
+  .about__content {
+    width: 100%;
+    max-width: 340px;
+    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .about__image {
+    width: 140px;
+    height: 140px;
+    flex-basis: 140px;
+  }
+
+  .about__text {
+    width: 100%;
+    text-align: center;
+  }
+
+  .about__text h3 {
+    font-size: 22px;
+  }
+
+  .about__text p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .footer {
+    height: 44px;
   }
 }
