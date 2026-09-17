@@ -129,6 +129,17 @@ img {
   font-weight: 700;
 }
 
+body.has-reveal main section {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+body.has-reveal main section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .service {
   height: 418px;
   padding-top: 96px;
@@ -316,4 +327,12 @@ img {
   font-size: 7px;
   line-height: 1;
   font-weight: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.has-reveal main section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
