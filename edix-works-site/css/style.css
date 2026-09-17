@@ -445,6 +445,8 @@ body.has-reveal main section.is-visible {
     scroll-snap-type: x mandatory;
     scroll-padding: 24px;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
   }
 
   .works-grid::-webkit-scrollbar {
@@ -454,6 +456,7 @@ body.has-reveal main section.is-visible {
   .work-card {
     flex: 0 0 min(78vw, 300px);
     scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 
   .work-card__image {
