@@ -346,7 +346,8 @@ body.has-reveal main section.is-visible {
 
 @media (max-width: 767px) {
   .hero {
-    min-height: 500px;
+    height: 100vh;
+    min-height: 100vh;
     aspect-ratio: auto;
     background-position: center;
   }
@@ -355,7 +356,7 @@ body.has-reveal main section.is-visible {
     top: 18px;
     left: 20px;
     right: 20px;
-    display: block;
+    display: flex;
   }
 
   .site-logo {
@@ -363,7 +364,8 @@ body.has-reveal main section.is-visible {
   }
 
   .global-nav {
-    margin-top: 14px;
+    margin-top: 0;
+    margin-left: auto;
     gap: 12px;
     font-size: 10px;
   }
@@ -540,5 +542,25 @@ body.has-reveal main section.is-visible {
 
   .footer {
     height: 44px;
+  }
+}
+
+@supports (height: 100svh) {
+  @media (max-width: 767px) {
+    .hero {
+      height: 100svh;
+      min-height: 100svh;
+    }
+  }
+}
+
+@media (max-width: 359px) {
+  .global-nav {
+    gap: 8px;
+    font-size: 9px;
+  }
+
+  .global-nav__contact {
+    width: 64px;
   }
 }
