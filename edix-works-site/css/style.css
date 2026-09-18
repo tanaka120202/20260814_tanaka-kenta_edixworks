@@ -168,9 +168,13 @@ body.has-reveal main section.is-visible {
 }
 
 .service {
-  height: 418px;
+  width: 100vw;
+  height: 549px;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
   padding-top: 96px;
-  background: #070b14;
+  background: url("../assets/Portfolio_Service.png") center center / 100% 100% no-repeat;
 }
 
 .service-list {
@@ -238,9 +242,12 @@ body.has-reveal main section.is-visible {
 }
 
 .works {
-  height: 813px;
+  width: 100vw;
+  height: 1104px;
+  margin-right: auto;
+  margin-left: auto;
   padding-top: 25px;
-  background: #0b1220;
+  background: url("../assets/Portfolio_Works.png") center center / 100% 100% no-repeat;
 }
 
 .works-grid {
@@ -446,6 +453,7 @@ body.has-reveal main section.is-visible {
   .service,
   .works,
   .about {
+    width: 100%;
     height: auto;
   }
 
