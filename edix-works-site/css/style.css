@@ -313,7 +313,8 @@ body.has-reveal main section.is-visible {
 .about {
   height: 339px;
   padding-top: 53px;
-  background: #070b14;
+  width: 100vw;
+  background: url("../assets/Portfolio_About.png") center center / 100% 100% no-repeat;
 }
 
 .about__content {
