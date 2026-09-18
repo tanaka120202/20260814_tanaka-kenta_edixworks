@@ -39,7 +39,7 @@ img {
   width: 100%;
   aspect-ratio: 1440 / 663;
   min-height: 418px;
-  background: url("../assets/Figma_top.png") center center / cover no-repeat;
+  background: url("../assets/Portfolio_Hero.png") center center / cover no-repeat;
   overflow: hidden;
 }
 
@@ -59,6 +59,7 @@ img {
   line-height: 1;
   font-weight: 700;
   letter-spacing: 0;
+  color: #78cfff;
 }
 
 .global-nav {
@@ -68,6 +69,10 @@ img {
   font-size: 10px;
   line-height: 1;
   font-weight: 400;
+}
+
+.global-nav > a:not(.global-nav__contact) {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .global-nav__contact {
@@ -84,10 +89,10 @@ img {
 
 .hero__content {
   position: absolute;
-  top: 178px;
-  left: 50%;
-  width: 100%;
-  transform: translateX(-50%);
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   color: #ffffff;
 }
@@ -102,9 +107,11 @@ img {
 
 .hero__content p {
   margin: 20px 0 0;
-  font-size: 8px;
+  font-size: 12px;
   line-height: 1.6;
   font-weight: 400;
+  text-align: justify;
+  padding-left: 15%;
 }
 
 .hero__mobile-break {
@@ -377,11 +384,10 @@ body.has-reveal main section.is-visible {
   }
 
   .hero__content {
-    top: 52%;
-    right: 20px;
-    left: 20px;
-    width: auto;
-    transform: translateY(-50%);
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .hero__content h1 {
