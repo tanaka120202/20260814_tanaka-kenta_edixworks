@@ -103,6 +103,7 @@ img {
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: 0.01em;
+  animation: hero-float-in 900ms ease-out both;
 }
 
 .hero__content p {
@@ -112,6 +113,18 @@ img {
   font-weight: 400;
   text-align: justify;
   padding-left: 15%;
+  animation: hero-float-in 900ms 140ms ease-out both;
+}
+
+@keyframes hero-float-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero__mobile-break {
@@ -344,6 +357,11 @@ body.has-reveal main section.is-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero__content h1,
+  .hero__content p {
+    animation: none;
+  }
+
   body.has-reveal main section {
     opacity: 1;
     transform: none;
