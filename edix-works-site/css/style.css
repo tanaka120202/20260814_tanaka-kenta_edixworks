@@ -39,7 +39,7 @@ img {
   width: 100%;
   aspect-ratio: 1440 / 663;
   min-height: 418px;
-  background: url("../assets/Portfolio_Hero.png") center center / cover no-repeat;
+  background: url("../assets/Portfolio_Hero.jpg") center center / cover no-repeat;
   overflow: hidden;
 }
 
@@ -174,7 +174,7 @@ body.has-reveal main section.is-visible {
   margin-bottom: 0;
   margin-left: auto;
   padding-top: 96px;
-  background: url("../assets/Portfolio_Service.png") center center / 100% 100% no-repeat;
+  background: url("../assets/Portfolio_Service.jpg") center center / 100% 100% no-repeat;
 }
 
 .service-list {
@@ -247,7 +247,7 @@ body.has-reveal main section.is-visible {
   margin-right: auto;
   margin-left: auto;
   padding-top: 25px;
-  background: url("../assets/Portfolio_Works.png") center center / 100% 100% no-repeat;
+  background: url("../assets/Portfolio_Works.jpg") center center / 100% 100% no-repeat;
 }
 
 .works-grid {
@@ -314,7 +314,7 @@ body.has-reveal main section.is-visible {
   height: 339px;
   padding-top: 53px;
   width: 100vw;
-  background: url("../assets/Portfolio_About.png") center center / 100% 100% no-repeat;
+  background: url("../assets/Portfolio_about.jpg") center center / 100% 100% no-repeat;
 }
 
 .about__content {
@@ -352,6 +352,10 @@ body.has-reveal main section.is-visible {
   font-size: 15px;
   line-height: 1.45;
   font-weight: 400;
+}
+
+.about__mobile-break {
+  display: none;
 }
 
 .footer {
@@ -590,6 +594,10 @@ body.has-reveal main section.is-visible {
   .about__text p {
     font-size: 15px;
     line-height: 1.7;
+  }
+
+  .about__mobile-break {
+    display: block;
   }
 
   .footer {
