@@ -315,7 +315,7 @@ ol {
   border-collapse: collapse;
   table-layout: fixed;
   font-size: 20px;
-  line-height: 22px background: white
+  line-height: 22px
 }
 
 .schedule th,
@@ -333,6 +333,11 @@ ol {
 
 .schedule thead {
   background: #f4ffed
+}
+
+.schedule tbody th,
+.schedule tbody td {
+  background-color: #fff
 }
 
 .schedule td {
