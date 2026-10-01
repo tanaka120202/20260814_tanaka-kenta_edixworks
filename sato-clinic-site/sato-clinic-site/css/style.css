@@ -670,8 +670,7 @@ ol {
 
 .home-access-layout .location-list {
   font-size: 32px;
-  line-height: 1.5;
-  list-style-position: inside
+  line-height: 1.5
 }
 
 .home-access-layout .location-note {
@@ -880,7 +879,8 @@ ol {
 
 .policies strong {
   font-weight: 700;
-  color: #277b60
+  color: #277b60;
+  margin-right: 10px
 }
 
 .about-7 {
@@ -943,7 +943,7 @@ ol {
 .location-list {
   font-size: 36px;
   line-height: 52px;
-  list-style-position: inside;
+  list-style: none;
   text-align: left;
   display: inline-block
 }
