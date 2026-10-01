@@ -46,7 +46,7 @@ html {
 
 body {
   margin:0;
-  min-width:1440px;
+  min-width:0;
   background:#fff;
   color:var(--ink);
   font-family:'Zen Kaku Gothic New','Yu Gothic',Meiryo,sans-serif;
@@ -1080,6 +1080,278 @@ ul,ol {
   left:-64px;
   top:-78px;
   object-fit:cover
+}
+
+@media (max-width:1100px) {
+  .container,
+  .medical-page .breadcrumbs,
+  .medical-details {
+    width:calc(100% - 40px);
+    max-width:950px
+  }
+
+  .medical-details {
+    transform:none
+  }
+
+  .schedule {
+    width:100%
+  }
+
+  .medical-grid {
+    width:calc(100% - 40px);
+    max-width:878px
+  }
+
+  .footer-main {
+    gap:20px;
+    padding-inline:20px
+  }
+
+  .footer-main h2 {
+    font-size:28px
+  }
+
+  .footer-main address {
+    font-size:24px
+  }
+
+  .footer-logo {
+    width:220px;
+    flex-shrink:0
+  }
+}
+
+@media (max-width:900px) {
+  .container,
+  .medical-page .breadcrumbs,
+  .medical-details {
+    width:calc(100% - 32px)
+  }
+
+  .site-header {
+    height:300px
+  }
+
+  .header-scenes .exterior,
+  .header-scenes .interior {
+    height:300px
+  }
+
+  .header-logo {
+    left:16px;
+    top:16px;
+    width:220px;
+    height:auto
+  }
+
+  .global-nav {
+    left:16px;
+    right:16px;
+    top:auto;
+    bottom:16px;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px 16px;
+    padding:8px;
+    white-space:normal;
+    font-size:16px
+  }
+
+  .catchphrase {
+    left:16px;
+    right:16px;
+    top:112px;
+    font-size:clamp(28px,7vw,56px)
+  }
+
+  .page-title h1,
+  .access-hours .section-heading,
+  .access-subjects .section-heading,
+  .access-location .section-heading {
+    font-size:clamp(32px,6vw,64px)
+  }
+
+  .section-heading,
+  .medical-row h2,
+  .news-article h2 {
+    font-size:clamp(28px,5vw,48px)
+  }
+
+  .home-hours,
+  .home-news,
+  .home-medical,
+  .home-about,
+  .home-staff,
+  .home-greeting,
+  .home-access,
+  .news-index,
+  .news-article,
+  .about-1,
+  .about-2,
+  .about-3,
+  .about-4,
+  .about-5,
+  .about-6,
+  .about-7,
+  .access-hours,
+  .access-subjects {
+    height:auto;
+    padding-top:40px;
+    padding-bottom:40px
+  }
+
+  .schedule {
+    font-size:clamp(12px,2vw,20px)
+  }
+
+  .schedule td {
+    font-size:clamp(14px,3vw,26px)
+  }
+
+  .schedule th:first-child {
+    width:15%
+  }
+
+  .schedule-key,
+  .home-news-layout,
+  .home-about-layout,
+  .greeting-layout,
+  .home-access-layout,
+  .medical-row {
+    display:block
+  }
+
+  .home-news-layout>img,
+  .home-about-layout img,
+  .greeting-layout>img,
+  .medical-row img {
+    margin-bottom:24px
+  }
+
+  .news-decoration {
+    display:none
+  }
+
+  .medical-grid {
+    grid-template-columns:1fr
+  }
+
+  .medical-grid a {
+    white-space:normal;
+    height:auto
+  }
+
+  .staff-card,
+  .staff-card:nth-of-type(even) {
+    grid-template-columns:238px minmax(0,1fr);
+    margin-left:0;
+    height:auto;
+    min-height:300px;
+    gap:16px
+  }
+
+  .staff-info {
+    height:auto;
+    min-height:300px
+  }
+
+  .staff-info h3 {
+    white-space:normal
+  }
+
+  .staff-info dd {
+    width:auto;
+    flex:1;
+    min-width:0
+  }
+
+  .medical-row h2 {
+    white-space:normal
+  }
+
+  .footer-main {
+    height:auto;
+    min-height:268px;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding-bottom:40px
+  }
+
+  .footer-logo {
+    margin-left:0
+  }
+}
+
+@media (max-width:600px) {
+  body {
+    font-size:16px
+  }
+
+  .staff-card,
+  .staff-card:nth-of-type(even) {
+    display:block;
+    margin-bottom:40px
+  }
+
+  .staff-photo {
+    margin-bottom:16px
+  }
+
+  .staff-info:before {
+    display:none
+  }
+
+  .staff-info {
+    min-height:0;
+    padding:12px
+  }
+
+  .staff-info h3 {
+    font-size:26px
+  }
+
+  .staff-info dl>div {
+    justify-content:flex-start
+  }
+
+  .staff-info dd {
+    overflow-wrap:anywhere
+  }
+
+  .home-news .news-list a,
+  .news-index .news-list a {
+    font-size:18px;
+    gap:12px
+  }
+
+  .reception,
+  .holiday-note,
+  .location-list,
+  .access-subjects>p {
+    font-size:18px
+  }
+
+  .location-list,
+  .home-access-layout .location-list {
+    font-size:20px;
+    overflow-wrap:anywhere
+  }
+
+  .map-frame,
+  .large-map {
+    max-width:100%
+  }
+
+  .footer-main {
+    display:block;
+    text-align:center;
+    padding:24px 16px 48px
+  }
+
+  .footer-logo {
+    margin:20px auto
+  }
 }
 
 
