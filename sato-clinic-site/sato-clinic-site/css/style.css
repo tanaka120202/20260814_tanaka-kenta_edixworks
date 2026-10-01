@@ -414,6 +414,20 @@ ol {
   border-bottom: 1px solid #777
 }
 
+.news-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0
+}
+
+.news-date {
+  flex-shrink: 0;
+  color: #555;
+  font-size: 16px;
+  white-space: nowrap
+}
+
 .home-news .news-list li {
   margin-bottom: 12px
 }
@@ -422,6 +436,10 @@ ol {
   font-size: 24px;
   line-height: 33px;
   padding: 0 10px
+}
+
+.home-news .news-date {
+  font-size: 14px
 }
 
 .home-news .align-right {
@@ -738,7 +756,16 @@ ol {
 .news-article h2 {
   font-size: 48px;
   line-height: 60px;
-  margin-bottom: 48px
+  margin-bottom: 12px
+}
+
+.news-article-date {
+  display: block;
+  margin-bottom: 12px;
+  color: #555;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: right
 }
 
 .news-article p {
@@ -1439,6 +1466,11 @@ ol {
   .news-index .news-list a {
     font-size: 18px;
     gap: 12px
+  }
+
+  .news-entry {
+    flex-wrap: wrap;
+    gap: 0 12px
   }
 
   .reception,
