@@ -301,12 +301,13 @@
   .faq-item dd > span { font-size: 28px; }
   .faq-end { font-size: 20px; line-height: 30px; margin-top: 0; }
 
-  .footer-main { height: 76px; padding: 0 16px; gap: 8px; }
-  .footer-main h2 { font-size: 12px; }
-  .footer-main address { font-size: 9px; line-height: 16px; }
-  .footer-logo { width: 110px; min-width: 70px; margin-left: auto; }
+  .footer-main { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; height: clamp(76px, 17.1vw, 118px); min-height: 0; padding: 0 clamp(16px, 4vw, 32px); gap: 8px; text-align: left; }
+  .footer-main h2 { font-size: clamp(12px, 2.7vw, 18px); }
+  .footer-main address { font-size: clamp(9px, 2.1vw, 14px); line-height: clamp(16px, 3.5vw, 24px); }
+  .footer-contact-row { grid-template-columns: 4em 1em max-content; }
+  .footer-logo { width: clamp(98px, 23.5vw, 160px); min-width: 70px; flex-shrink: 0; margin: 0 0 0 auto; }
   .footer-logo img { width: 100%; height: auto; }
-  .copyright { font-size: 7px; right: 16px; bottom: 3px; }
+  .copyright { position: absolute; font-size: clamp(7px, 1.75vw, 12px); right: clamp(16px, 4vw, 32px); bottom: clamp(6px, 2vw, 11px); margin: 0; }
   .disclaimer { font-size: 12px; line-height: 20px; padding: 16px; }
 }
 
@@ -368,20 +369,4 @@
   .greeting-layout p + p:not(.signature) { margin-top: 12px; }
   .greeting-layout .signature { margin-top: 22px; }
 
-  .footer-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    min-height: 0;
-    padding: 20px 16px 32px;
-    gap: 8px;
-    text-align: center;
-  }
-  .footer-main h2 { font-size: 20px; }
-  .footer-main address { font-size: 14px; line-height: 1.5; }
-  .footer-contact-row { grid-template-columns: 4em 1em minmax(0, 1fr); }
-  .footer-logo { width: 140px; margin: 8px auto 0; }
-  .copyright { position: static; font-size: 12px; margin-top: 8px; }
 }
