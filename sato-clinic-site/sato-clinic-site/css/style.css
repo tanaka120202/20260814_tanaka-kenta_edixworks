@@ -669,17 +669,47 @@ ul,ol {
 
 .news-index {
   padding-top:14px;
-  height:530px
+  padding-bottom:60px
 }
 
 .news-index .news-list li {
   margin-bottom:30px
 }
 
+.news-index .news-list li:last-child {
+  margin-bottom:0
+}
+
 .news-index .news-list a {
   font-size:32px;
   line-height:50px;
   padding:0 4px
+}
+
+.news-pagination {
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  margin-top:20px;
+  min-height:40px
+}
+
+.news-pagination .current-page {
+  grid-column:2;
+  display:grid;
+  place-items:center;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--green);
+  color:#fff;
+  font-size:20px
+}
+
+.news-pagination a {
+  grid-column:3;
+  justify-self:end;
+  font-size:20px
 }
 
 .home-news .news-list a:hover,
@@ -1234,6 +1264,10 @@ ul,ol {
 
   .home-about {
     padding-top:20px
+  }
+
+  .news-index {
+    padding-bottom:60px
   }
 
   .schedule {
