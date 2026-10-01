@@ -267,6 +267,16 @@ ul,ol {
   text-align:center
 }
 
+.footer-contact-row {
+  display:grid;
+  grid-template-columns:4em 1em max-content;
+  text-align:left
+}
+
+.footer-contact-row span:first-child {
+  text-align:right
+}
+
 .footer-logo {
   margin-left:auto;
   display:block;
@@ -1287,6 +1297,15 @@ ul,ol {
 @media (max-width:600px) {
   body {
     font-size:16px
+  }
+
+  .footer-main address {
+    font-size:16px
+  }
+
+  .footer-contact-row {
+    grid-template-columns:4em 1em minmax(0,1fr);
+    overflow-wrap:anywhere
   }
 
   .staff-card,
