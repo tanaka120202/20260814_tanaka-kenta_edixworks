@@ -447,7 +447,7 @@ ul,ol {
 }
 
 .home-medical {
-  height:561px;
+  height:581px;
   padding-top:38px
 }
 
@@ -481,7 +481,7 @@ ul,ol {
 
 .home-about {
   height:632px;
-  padding-top:136px
+  padding-top:116px
 }
 
 .home-about .section-heading {
@@ -710,6 +710,10 @@ ul,ol {
 
 .medical-page .breadcrumbs {
   width:882px
+}
+
+.medical-page .page-title h1 {
+  padding-left:34px
 }
 
 .medical-details {
@@ -1098,6 +1102,10 @@ ul,ol {
 }
 
 @media (max-width:1100px) {
+  .medical-page .page-title h1 {
+    padding-left:0
+  }
+
   .container,
   .medical-page .breadcrumbs,
   .medical-details {
@@ -1214,6 +1222,14 @@ ul,ol {
     height:auto;
     padding-top:40px;
     padding-bottom:40px
+  }
+
+  .home-medical {
+    padding-bottom:60px
+  }
+
+  .home-about {
+    padding-top:20px
   }
 
   .schedule {
