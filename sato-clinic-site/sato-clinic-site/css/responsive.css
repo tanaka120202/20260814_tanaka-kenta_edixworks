@@ -234,6 +234,10 @@
   .greeting-layout > img { display: none; }
   .greeting-layout p { font-size: 16px; line-height: 24px; margin-bottom: 4px; }
   .greeting-layout .signature { margin-top: 12px; }
+  .home-gallery { padding: 48px 0 60px; }
+  .home-gallery .section-heading { margin-bottom: 24px; }
+  .gallery-viewport { width: calc(100% - 32px); }
+  .gallery-track { gap: 12px; }
   .home-access { height: auto; padding: 0 0 60px; }
   .home-access .section-heading { margin-bottom: 26px; }
   .home-access-layout { display: flex; flex-direction: column; gap: 20px; }

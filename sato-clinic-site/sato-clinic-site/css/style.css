@@ -315,7 +315,7 @@ ol {
   border-collapse: collapse;
   table-layout: fixed;
   font-size: 20px;
-  line-height: 22px
+  line-height: 22px background: white
 }
 
 .schedule th,
@@ -664,6 +664,83 @@ ol {
   text-align: right;
   margin-top: 22px;
   font-weight: 500
+}
+
+.home-gallery {
+  padding: 72px 0 88px;
+  background: transparent;
+}
+
+.home-gallery .section-heading {
+  margin-bottom: 40px;
+}
+
+.gallery-viewport {
+  position: relative;
+  width: min(950px, calc(100% - 40px));
+  margin: 0 auto;
+  overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
+  cursor: grab;
+}
+
+.gallery-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.gallery-track {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  transition: transform 600ms ease;
+}
+
+.gallery-slide {
+  flex: 0 0 min(66vw, 640px);
+  width: min(66vw, 640px);
+  aspect-ratio: 7 / 4;
+  transform: scale(.5);
+  transition: transform 600ms ease;
+}
+
+.gallery-slide.is-active {
+  transform: scale(1);
+}
+
+.gallery-slide.is-prev {
+  transform-origin: right center;
+}
+
+.gallery-slide.is-next {
+  transform-origin: left center;
+}
+
+.gallery-initializing .gallery-track,
+.gallery-initializing .gallery-slide {
+  transition: none;
+}
+
+.gallery-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-user-drag: none;
+}
+
+.gallery-viewport:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .gallery-track,
+  .gallery-slide {
+    transition: none;
+  }
 }
 
 .home-access {
