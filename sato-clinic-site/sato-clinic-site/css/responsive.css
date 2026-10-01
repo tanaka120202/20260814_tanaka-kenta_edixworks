@@ -183,9 +183,11 @@
   .home-news-layout > img { grid-column: 1; grid-row: 2; width: 100%; height: 176px; border-radius: 6px; }
   .home-news .align-right { position: relative; grid-column: 2; grid-row: 2; align-self: center; margin: 0; z-index: 1; }
   .home-news .button { font-size: 14px; padding-inline: 10px; background: white; white-space: nowrap; }
-  .news-decoration { left: auto; right: 12px; top: auto; bottom: 42px; width: 110px; height: 110px; }
+  .news-decoration { display: block; left: auto; right: 12px; top: auto; bottom: 42px; width: 110px; height: 110px; z-index: 0; pointer-events: none; }
   .news-decoration::before { left: -66px; top: -74px; width: 104px; height: 102px; }
   .news-decoration::after { left: 32px; top: 96px; width: 78px; height: 52px; }
+  .home-news .news-list,
+  .home-news-layout > img { position: relative; z-index: 1; }
 
   .home-medical { height: auto; padding: 64px 0 52px; }
   .home-medical .section-heading { margin-bottom: 26px; }
@@ -195,8 +197,20 @@
   .home-about { height: auto; padding-top: 0; padding-bottom: 52px; }
   .home-about .section-heading { margin-bottom: 24px; }
   .home-about-layout { display: flex; flex-direction: column; gap: 20px; }
-  .home-about-layout > div { order: 1; }
-  .home-about-layout > img { order: 2; width: 100%; height: auto; aspect-ratio: 1.45; object-fit: cover; }
+  .home-about-layout > div { order: 1; position: relative; isolation: isolate; }
+  .home-about-layout > div::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -36px;
+    width: min(200px, 56vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #e7faf3;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .home-about-layout > img { order: 2; position: relative; z-index: 1; width: 100%; height: auto; aspect-ratio: 1.45; object-fit: cover; }
   .home-about-layout p { font-size: 16px; line-height: 24px; }
   .home-about-layout .align-right { margin-top: 20px; }
 
@@ -351,13 +365,6 @@
   .news-article h2 { margin-bottom: 12px; }
   .news-article-date { margin-bottom: 12px; }
 
-  .greeting-layout > img {
-    display: block;
-    width: min(324px, 100%);
-    height: auto;
-    aspect-ratio: 324 / 430;
-    margin: 0 auto 24px;
-  }
   .greeting-layout p + p:not(.signature) { margin-top: 12px; }
   .greeting-layout .signature { margin-top: 22px; }
 
