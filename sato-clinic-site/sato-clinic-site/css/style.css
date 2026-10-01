@@ -597,7 +597,7 @@ ul,ol {
 }
 
 .home-greeting {
-  height:589px
+  padding-bottom:64px
 }
 
 .home-greeting .section-heading {
@@ -607,22 +607,31 @@ ul,ol {
 .greeting-layout {
   display:grid;
   grid-template-columns:324px 1fr;
-  gap:44px
+  gap:44px;
+  align-items:center
 }
 
 .greeting-layout>img {
   border-radius:8px;
-  object-position:44% center
+  width:324px;
+  height:auto;
+  object-fit:contain
 }
 
 .greeting-layout p {
-  font-size:20px;
-  line-height:25px
+  font-family:'Zen Kaku Gothic New','Yu Gothic',Meiryo,sans-serif;
+  font-weight:400;
+  font-size:19px;
+  line-height:30px
+}
+
+.greeting-layout p + p:not(.signature) {
+  margin-top:12px
 }
 
 .greeting-layout .signature {
   text-align:right;
-  margin-top:12px;
+  margin-top:22px;
   font-weight:500
 }
 
@@ -980,11 +989,6 @@ ul,ol {
 }
 
 
-.greeting-layout>img {
-  object-position:80% center
-}
-
-
 .medical-row img[src$='medical_7.jpg'] {
   object-position:100% center
 }
@@ -1227,10 +1231,18 @@ ul,ol {
   .schedule-key,
   .home-news-layout,
   .home-about-layout,
-  .greeting-layout,
   .home-access-layout,
   .medical-row {
     display:block
+  }
+
+  .greeting-layout {
+    grid-template-columns:minmax(0,35%) minmax(0,1fr);
+    gap:24px
+  }
+
+  .greeting-layout>img {
+    width:100%
   }
 
   .home-news-layout>img,
@@ -1297,6 +1309,15 @@ ul,ol {
 @media (max-width:600px) {
   body {
     font-size:16px
+  }
+
+  .greeting-layout {
+    display:block
+  }
+
+  .greeting-layout>img {
+    width:324px;
+    margin-inline:auto
   }
 
   .footer-main address {
