@@ -608,14 +608,14 @@ ul,ol {
   display:grid;
   grid-template-columns:324px 1fr;
   gap:44px;
-  align-items:center
+  align-items:start
 }
 
 .greeting-layout>img {
   border-radius:8px;
   width:324px;
-  height:auto;
-  object-fit:contain
+  height:430px;
+  object-position:80% center
 }
 
 .greeting-layout p {
@@ -1242,7 +1242,9 @@ ul,ol {
   }
 
   .greeting-layout>img {
-    width:100%
+    width:100%;
+    height:auto;
+    aspect-ratio:324 / 430
   }
 
   .home-news-layout>img,
