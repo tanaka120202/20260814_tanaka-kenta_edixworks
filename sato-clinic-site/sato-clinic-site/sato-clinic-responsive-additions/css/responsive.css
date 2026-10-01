@@ -1,0 +1,316 @@
+/* 既存のstyle.cssの後に読み込む追加用CSS。
+   先ほどのサイトのクラス名に対応。PCの既存スタイルは1440px以上で維持する。 */
+.mobile-background,
+.mobile-menu {
+  display: none;
+}
+
+/* PCとスマートフォンの間の幅でも横スクロールを防ぐ。 */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  body { min-width: 0; }
+  .container { width: min(950px, calc(100% - 48px)); }
+  .schedule { width: 100%; }
+  .medical-details { width: min(958px, calc(100% - 48px)); transform: none; }
+  .medical-page .breadcrumbs { width: min(882px, calc(100% - 48px)); }
+  .global-nav { font-size: clamp(12px, 1.39vw, 20px); gap: 12px; right: 16px; padding-inline: 12px; }
+  .catchphrase { font-size: clamp(40px, 4.44vw, 64px); }
+  .header-logo { width: 260px; }
+  .footer-main { gap: 24px; padding-inline: 32px; }
+  .footer-main h2 { font-size: clamp(24px, 2.5vw, 36px); }
+  .footer-main address { font-size: clamp(22px, 2.22vw, 32px); }
+  .footer-logo { width: 240px; flex-shrink: 0; }
+}
+
+/* スマートフォンの基準幅は402px。320px以上で自然に折り返す。 */
+@media (max-width: 1023px) {
+  body {
+    min-width: 0;
+    position: relative;
+    isolation: isolate;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  /* opacityは背景だけに適用。文字・写真は薄くしない。
+     祖先にtransformを指定しないことで、画面を基準に固定する。 */
+  .mobile-background {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .15;
+    background: url('../assets/hospital-mobile.png') center top / cover no-repeat;
+  }
+
+  .container,
+  .medical-page .breadcrumbs,
+  .medical-details {
+    width: calc(100% - 32px);
+    max-width: 720px;
+    margin-inline: auto;
+    transform: none;
+  }
+
+  .site-header {
+    height: clamp(148px, 46.27vw, 280px);
+    position: relative;
+    overflow: visible;
+    z-index: 10;
+  }
+  .header-scenes { overflow: hidden; }
+  .header-scenes .exterior {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+  }
+  .header-scenes .interior,
+  .header-scenes::after,
+  .global-nav { display: none; }
+  .header-logo { left: 12px; top: 14px; width: 108px; height: auto; }
+  .header-logo img { width: 100%; height: auto; }
+  .catchphrase {
+    left: 0;
+    right: 0;
+    top: 40%;
+    font-size: clamp(24px, 7.96vw, 44px);
+    line-height: 1.3;
+    white-space: nowrap;
+    -webkit-text-stroke: 3px #e2ffd0;
+    text-shadow: 0 2px 4px #76a6a2;
+  }
+
+  /* details/summaryを使い、JavaScriptなしでマウス・タッチ・キーボードに対応。 */
+  .mobile-menu { display: block; position: absolute; right: 0; top: 0; z-index: 30; }
+  .mobile-menu > summary {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    list-style: none;
+  }
+  .mobile-menu > summary::-webkit-details-marker { display: none; }
+  .mobile-menu > summary::marker { content: ''; }
+  .menu-icon { width: 24px; display: flex; flex-direction: column; gap: 4px; }
+  .menu-icon > span {
+    height: 3px;
+    width: 24px;
+    background: #08954f;
+    border: 1px solid #effff2;
+    box-shadow: 0 0 1px #effff2;
+  }
+  .mobile-menu[open] .menu-icon > span:first-child { transform: translateY(7px) rotate(45deg); }
+  .mobile-menu[open] .menu-icon > span:nth-child(2) { opacity: 0; }
+  .mobile-menu[open] .menu-icon > span:last-child { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-navigation {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    width: min(264px, calc(100vw - 16px));
+    padding: 38px 0;
+    background: #0a944c;
+    display: flex;
+    flex-direction: column;
+    max-height: min(726px, calc(100dvh - 44px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: 0 8px 20px rgb(0 0 0 / .16);
+  }
+  .mobile-navigation a {
+    display: grid;
+    place-items: center;
+    min-height: 96px;
+    padding: 14px 6px;
+    font-size: 36px;
+    line-height: 1.3;
+    color: #0a944c;
+    -webkit-text-stroke: 1px white;
+    paint-order: stroke fill;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .mobile-navigation a:nth-last-child(2) { font-size: 28px; }
+  .mobile-navigation a:hover,
+  .mobile-navigation a:focus-visible { background: #087a40; }
+
+  .page-title { height: auto; min-height: 46px; }
+  .page-title h1 { font-size: clamp(26px, 7.96vw, 32px); line-height: 1.45; }
+  .breadcrumbs,
+  .news-detail-page .breadcrumbs {
+    height: auto;
+    padding-top: 4px;
+    padding-bottom: 14px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+  .section-heading { font-size: 24px; line-height: 1.35; margin-bottom: 28px; }
+  .button { min-width: 0; font-size: 16px; line-height: 24px; padding: 8px 18px; }
+  .tinted { background: transparent; }
+
+  .home-hours,
+  .access-hours {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: auto;
+    padding-top: 50px;
+    margin-bottom: 42px;
+  }
+  .home-hours .section-heading,
+  .access-hours .section-heading { grid-column: 1 / -1; font-size: 24px; margin: 0 0 24px; }
+  .schedule { grid-column: 1 / -1; width: 100%; font-size: 20px; line-height: 22px; }
+  .schedule th:first-child { width: 30%; }
+  .schedule th,
+  .schedule td { height: 54px; padding: 4px 0; }
+  .schedule tbody th { font-size: 18px; }
+  .schedule td { font-size: 22px; }
+  .schedule-key { display: contents; }
+  .schedule-key > p:first-child { grid-column: 1; grid-row: 3; padding-top: 10px; font-size: 14px; }
+  .closed-days { grid-column: 2; grid-row: 3; padding: 10px 0 0; margin: 0; font-size: 14px; text-align: right; }
+  .reception { grid-column: 1 / -1; grid-row: 4; padding-top: 10px; font-size: clamp(14px, 4.65vw, 20px); white-space: nowrap; }
+  .holiday-note { grid-column: 1 / -1; grid-row: 5; padding: 10px 0 0; margin: 0; font-size: 16px; line-height: 24px; }
+
+  .home-news { height: auto; padding-top: 0; }
+  .home-news .section-heading { margin-bottom: 20px; }
+  .home-news-layout { position: relative; display: grid; grid-template-columns: 45% 1fr; gap: 10px 4px; }
+  .home-news-links { display: contents; }
+  .home-news .news-list { grid-column: 1 / -1; grid-row: 1; }
+  .home-news .news-list li { margin-bottom: 0; }
+  .home-news .news-list a { font-size: 18px; line-height: 37px; padding-inline: 8px 0; gap: 10px; }
+  .home-news .news-list a span:first-child { min-width: 0; }
+  .home-news-layout > img { grid-column: 1; grid-row: 2; width: 100%; height: 176px; border-radius: 6px; }
+  .home-news .align-right { position: relative; grid-column: 2; grid-row: 2; align-self: center; margin: 0; z-index: 1; }
+  .home-news .button { font-size: 14px; padding-inline: 10px; background: white; white-space: nowrap; }
+  .news-decoration { left: auto; right: 12px; top: auto; bottom: 42px; width: 110px; height: 110px; }
+  .news-decoration::before { left: -66px; top: -74px; width: 104px; height: 102px; }
+  .news-decoration::after { left: 32px; top: 96px; width: 78px; height: 52px; }
+
+  .home-medical { height: auto; padding: 64px 0 52px; }
+  .home-medical .section-heading { margin-bottom: 26px; }
+  .medical-intro { text-align: left; font-size: 16px; line-height: 24px; margin-bottom: 20px; }
+  .medical-grid { width: calc(100% - 32px); max-width: 720px; grid-template-columns: 1fr; gap: 24px; margin-bottom: 24px; }
+  .medical-grid a { height: auto; min-height: 90px; display: flex; align-items: center; padding: 24px 32px; font-size: 24px; white-space: normal; }
+  .home-about { height: auto; padding-top: 0; padding-bottom: 52px; }
+  .home-about .section-heading { margin-bottom: 24px; }
+  .home-about-layout { display: flex; flex-direction: column; gap: 20px; }
+  .home-about-layout > div { order: 1; }
+  .home-about-layout > img { order: 2; width: 100%; height: auto; aspect-ratio: 1.45; object-fit: cover; }
+  .home-about-layout p { font-size: 16px; line-height: 24px; }
+  .home-about-layout .align-right { margin-top: 20px; }
+
+  .home-staff { height: auto; padding-top: 0; padding-bottom: 12px; }
+  .home-staff .section-heading { margin-bottom: 24px; }
+  .staff-intro { font-size: 16px; line-height: 22px; margin-bottom: 42px; }
+  .staff-card,
+  .staff-card:nth-of-type(even) { height: auto; margin-left: 0; margin-bottom: 48px; display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .staff-card::before { content: ''; position: absolute; left: 50%; top: -24px; transform: translateX(-50%); width: min(320px, 90%); aspect-ratio: 1; border-radius: 50%; background: #e7faf3; }
+  .staff-photo { position: relative; width: 190px; height: 238px; border-radius: 8px 8px 0 0; }
+  .staff-info { position: relative; width: 100%; height: auto; min-height: 300px; border-width: 2px; padding: 10px 10px 14px; background: white; }
+  .staff-info::before { display: none; }
+  .staff-info h3 { text-align: center; font-size: 24px; line-height: 32px; white-space: normal; }
+  .staff-info dl { margin-top: 24px; font-size: 16px; line-height: 22px; }
+  .staff-info dl > div { display: block; margin-bottom: 24px; }
+  .staff-info dt { text-align: center; margin-bottom: 10px; font-weight: 500; }
+  .staff-info dd { width: auto; }
+  .home-greeting { height: auto; padding-bottom: 52px; }
+  .home-greeting .section-heading { margin-bottom: 24px; }
+  .greeting-layout { display: block; }
+  .greeting-layout > img { display: none; }
+  .greeting-layout p { font-size: 16px; line-height: 24px; margin-bottom: 4px; }
+  .greeting-layout .signature { margin-top: 12px; }
+  .home-access { height: auto; padding: 0 0 60px; }
+  .home-access .section-heading { margin-bottom: 26px; }
+  .home-access-layout { display: flex; flex-direction: column; gap: 20px; }
+  .home-access-layout h3 { font-size: 24px; margin-bottom: 14px; }
+  .home-access-layout .location-list { display: block; font-size: 16px; line-height: 24px; text-align: center; list-style: none; }
+  .home-access-layout .location-note { font-size: 16px; line-height: 24px; margin-top: 16px; }
+
+  .news-index { height: auto; min-height: 312px; padding-top: 26px; padding-bottom: 80px; }
+  .news-index .news-list li { margin-bottom: 18px; }
+  .news-index .news-list a { font-size: 18px; line-height: 24px; padding: 0 0 5px; gap: 8px; }
+  .news-article { height: auto; min-height: 308px; padding: 4px 0 64px; }
+  .news-article h2 { font-size: 24px; line-height: 1.5; margin-bottom: 28px; }
+  .news-article p { font-size: 16px; line-height: 24px; }
+  .news-article .align-right { margin-top: 42px; }
+
+  /* 既存の写真と文章を変更せず、写真の高さから文章を回り込ませる。 */
+  .medical-details { margin-top: 0; padding-bottom: 60px; }
+  .medical-row { --photo-offset: 87px; display: flow-root; min-height: 0; margin-bottom: 20px; }
+  .medical-row > img { float: left; width: 90px; height: calc(80px + var(--photo-offset)); padding-top: var(--photo-offset); margin: 0 6px 0 0; shape-outside: inset(calc(var(--photo-offset) + 10px) 0 0 0); }
+  .medical-row > div { display: contents; }
+  .medical-row h2 { font-size: 24px; line-height: 35px; padding-left: 10px; border-left-width: 10px; margin-bottom: 8px; white-space: normal; }
+  .medical-row p { font-size: 16px; line-height: 23px; }
+  #medical-2 { --photo-offset: 110px; }
+
+  .about-section,
+  .about-1,
+  .about-2,
+  .about-3,
+  .about-4,
+  .about-5,
+  .about-6,
+  .about-7 { height: auto; padding: 18px 0 38px; background: transparent; }
+  .about-section .section-heading { margin-bottom: 18px; }
+  .about-section p { font-size: 16px; line-height: 24px; }
+  .family-list { list-style: none; margin-top: 10px; font-size: 16px; line-height: 24px; }
+  .family-list li { padding-left: 16px; text-indent: -16px; margin-bottom: 6px; }
+  .family-list strong { font-size: 16px; }
+  .policies { margin-top: 26px; padding: 4px 10px; border: 2px solid #10a5a9; background: white; font-size: 18px; line-height: 28px; }
+  .policies li { padding: 14px 0 14px 36px; }
+  .policies strong { display: block; margin-left: -26px; font-size: 20px; }
+  .policy-description { display: block; }
+
+  .access-hours { padding-top: 8px; margin-bottom: 26px; }
+  .access-subjects { height: auto; padding-top: 0; margin-bottom: 30px; }
+  .access-subjects .section-heading { font-size: 24px; margin-bottom: 14px; }
+  .subjects { margin-bottom: 18px; }
+  .subjects li { font-size: 18px; line-height: 26px; margin-bottom: 10px; }
+  .access-subjects > p { font-size: 16px; line-height: 24px; }
+  .access-location { padding: 0 0 60px; }
+  .access-location .section-heading { font-size: 32px; margin-bottom: 18px; }
+  .location-list { font-size: 20px; line-height: 32px; text-align: left; }
+  .location-note { font-size: 18px; line-height: 28px; margin-top: 12px; text-align: left; }
+  .map-frame,
+  .home-map-frame { width: 100%; height: auto; aspect-ratio: 4 / 3; margin: 10px auto 0; }
+  .home-map-frame { aspect-ratio: 1.2; margin-top: 0; }
+  .map-frame img,
+  .home-map-frame img { width: 140%; height: auto; left: -20%; top: -28%; max-width: none; }
+
+  .faq-content { padding: 20px 0 64px; }
+  .faq-section { margin-bottom: 48px; }
+  .faq-section .section-heading { margin-bottom: 28px; }
+  .faq-item { margin-bottom: 40px; }
+  .faq-item dt { display: block; font-size: 24px; line-height: 34px; margin-bottom: 14px; font-weight: 400; }
+  .faq-item dd { gap: 6px; font-size: 16px; line-height: 28px; }
+  .faq-item dd > span { font-size: 28px; }
+  .faq-end { font-size: 20px; line-height: 30px; margin-top: 0; }
+
+  .footer-main { height: 76px; padding: 0 16px; gap: 8px; }
+  .footer-main h2 { font-size: 12px; }
+  .footer-main address { font-size: 9px; line-height: 16px; }
+  .footer-logo { width: 110px; min-width: 70px; margin-left: auto; }
+  .footer-logo img { width: 100%; height: auto; }
+  .copyright { font-size: 7px; right: 16px; bottom: 3px; }
+  .disclaimer { font-size: 12px; line-height: 20px; padding: 16px; }
+}
+
+/* 小さい端末では固定幅・長い見出しをさらに調整する。 */
+@media (max-width: 374px) {
+  .schedule { font-size: 18px; }
+  .schedule tbody th { font-size: 15px; }
+  .schedule td { font-size: 20px; }
+  .closed-days,
+  .schedule-key > p:first-child { font-size: 12px; }
+  .home-news .news-list a { font-size: 16px; }
+  .home-news .button { font-size: 12px; padding-inline: 6px; }
+  .medical-grid a { font-size: 21px; padding-inline: 22px; }
+  .medical-row h2 { font-size: 21px; }
+  .medical-row { --photo-offset: 110px; }
+  #medical-2 { --photo-offset: 133px; }
+  .footer-main { padding-inline: 8px; gap: 4px; }
+  .footer-main h2 { font-size: 10px; }
+  .footer-main address { font-size: 8px; }
+  .footer-logo { width: 88px; }
+}

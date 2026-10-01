@@ -10,10 +10,25 @@
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%230d9850' d='M11 2h10v9h9v10h-9v9H11v-9H2V11h9z'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/responsive.css">
 </head>
 
 <body class="news-page">
+  <div class="mobile-background" aria-hidden="true"></div>
   <header class="site-header">
+    <details class="mobile-menu">
+      <summary aria-label="メニューを開閉">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </summary>
+      <nav class="mobile-navigation" aria-label="スマートフォン用ナビゲーション">
+        <a href="./index.html">TOP</a>
+        <a href="./news.html">お知らせ</a>
+        <a href="./medical.html">診療内容</a>
+        <a href="./about.html">当院について</a>
+        <a href="./access.html">診療時間・所在地</a>
+        <a href="./faq.html">よくあるご質問</a>
+      </nav>
+    </details>
     <div class="header-scenes">
       <img src="./assets/hospital_1.jpg" alt="" class="exterior">
       <img src="./assets/hospital_5.jpg" alt="" class="interior">

@@ -1,4 +1,4 @@
-/* PCデザインの基準幅：1440px。レスポンシブ対応は行わない。 */
+/* PCデザインの基準幅：1440px。スマホ用の調整はresponsive.cssに定義。 */
 @font-face {
   font-family: 'Zen Kaku Gothic New';
   font-style: normal;
