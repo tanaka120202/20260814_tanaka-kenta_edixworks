@@ -1,0 +1,1085 @@
+/* PCデザインの基準幅：1440px。レスポンシブ対応は行わない。 */
+@font-face {
+  font-family:'Zen Kaku Gothic New';
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+  src:url('../assets/fonts/zen-kaku-gothic-new-regular.ttf') format('truetype')
+}
+
+
+@font-face {
+  font-family:'Zen Kaku Gothic New';
+  font-style:normal;
+  font-weight:500;
+  font-display:swap;
+  src:url('../assets/fonts/zen-kaku-gothic-new-medium.ttf') format('truetype')
+}
+
+
+@font-face {
+  font-family:'Zen Kaku Gothic New';
+  font-style:normal;
+  font-weight:700;
+  font-display:swap;
+  src:url('../assets/fonts/zen-kaku-gothic-new-bold.ttf') format('truetype')
+}
+
+
+:root {
+  --ink:#111;
+  --green:#0c9850;
+  --teal:#10a5a9;
+  --mint:#f2fdf8;
+  --title:#ebffdf;
+  --footer:#d5ffba
+}
+
+
+* {
+  box-sizing:border-box
+}
+
+html {
+  scroll-behavior:smooth
+}
+
+body {
+  margin:0;
+  min-width:1440px;
+  background:#fff;
+  color:var(--ink);
+  font-family:'Zen Kaku Gothic New','Yu Gothic',Meiryo,sans-serif;
+  font-size:20px;
+  font-weight:400;
+  line-height:1.45
+}
+
+a {
+  color:inherit;
+  text-decoration:none
+}
+
+a:hover {
+  text-decoration:underline
+}
+
+a:focus-visible {
+  outline:3px solid var(--teal);
+  outline-offset:5px
+}
+
+img {
+  display:block;
+  max-width:100%;
+  object-fit:cover
+}
+
+h1,h2,h3,p,dl,dd,ul,ol {
+  margin:0
+}
+
+h1,h2,h3 {
+  font-weight:500
+}
+
+ul,ol {
+  padding:0
+}
+
+.container {
+  width:950px;
+  margin-inline:auto
+}
+
+.align-right {
+  text-align:right
+}
+
+.align-center {
+  text-align:center
+}
+
+.visually-hidden {
+  position:absolute;
+  width:1px;
+  height:1px;
+  margin:-1px;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap
+}
+
+.tinted {
+  background:var(--mint)
+}
+
+
+.site-header {
+  height:244px;
+  position:relative;
+  overflow:hidden
+}
+
+.header-scenes {
+  position:absolute;
+  inset:0;
+  display:flex
+}
+
+.header-scenes .exterior {
+  width:45.28%;
+  height:244px;
+  object-position:center 58%
+}
+
+.header-scenes .interior {
+  width:54.72%;
+  height:244px;
+  object-position:center 55%
+}
+
+.header-scenes:after {
+  content:'';
+  position:absolute;
+  left:45.28%;
+  right:0;
+  top:0;
+  bottom:0;
+  background:rgba(76,151,164,.18)
+}
+
+.header-logo {
+  position:absolute;
+  left:50px;
+  top:24px;
+  width:300px;
+  height:90px
+}
+
+.header-logo img,.footer-logo img {
+  object-fit:contain;
+  filter:drop-shadow(1px 0 white) drop-shadow(-1px 0 white) drop-shadow(0 1px white) drop-shadow(0 -1px white)
+}
+
+.global-nav {
+  position:absolute;
+  right:24px;
+  top:24px;
+  background:#b9e4bc;
+  display:flex;
+  gap:20px;
+  padding:0 20px;
+  line-height:24px;
+  border-radius:4px;
+  color:#3f6c59;
+  font-size:20px;
+  white-space:nowrap
+}
+
+.catchphrase {
+  position:absolute;
+  left:45.28%;
+  right:0;
+  top:83px;
+  text-align:center;
+  font-size:64px;
+  line-height:1.25;
+  font-weight:700;
+  color:#159b9f;
+  -webkit-text-stroke:5px #e2ffd0;
+  paint-order:stroke fill;
+  text-shadow:0 3px 6px #76a6a2
+}
+
+
+.page-title {
+  height:78px;
+  background:var(--title)
+}
+
+.page-title h1 {
+  font-size:64px;
+  line-height:78px
+}
+
+.breadcrumbs {
+  height:80px;
+  padding-top:24px;
+  font-size:20px;
+  line-height:28px
+}
+
+.section-heading {
+  font-size:48px;
+  line-height:1.25;
+  text-align:center;
+  margin-bottom:40px
+}
+
+.button {
+  display:inline-block;
+  border:1px solid #6b6b6b;
+  border-radius:14px;
+  background:#fff;
+  font-size:20px;
+  line-height:28px;
+  padding:8px 18px;
+  min-width:242px;
+  text-align:center
+}
+
+.button:hover {
+  background:#f1faf4;
+  text-decoration:none
+}
+
+.text-link {
+  border-bottom:1px solid #333;
+  padding:0 12px 2px
+}
+
+
+.site-footer {
+  background:var(--footer);
+  color:#365c48
+}
+
+.footer-main {
+  height:268px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  padding:0 48px;
+  gap:42px
+}
+
+.footer-main h2 {
+  font-size:36px;
+  font-weight:400;
+  white-space:nowrap
+}
+
+.footer-main address {
+  font-style:normal;
+  font-size:32px;
+  line-height:1.5;
+  text-align:center
+}
+
+.footer-logo {
+  margin-left:auto;
+  display:block;
+  width:300px
+}
+
+.copyright {
+  position:absolute;
+  right:22px;
+  bottom:12px;
+  font-size:20px
+}
+
+.disclaimer {
+  padding:20px 40px 24px;
+  border-top:1px solid rgba(54,92,72,.18);
+  text-align:center;
+  font-size:16px;
+  line-height:1.7;
+  color:#365c48
+}
+
+
+.schedule {
+  width:950px;
+  border-collapse:collapse;
+  table-layout:fixed;
+  font-size:20px;
+  line-height:22px
+}
+
+.schedule th,.schedule td {
+  border:1px solid #555;
+  text-align:center;
+  font-weight:400;
+  height:54px;
+  padding:4px 0
+}
+
+.schedule th:first-child {
+  width:110px
+}
+
+.schedule thead {
+  background:#f4ffed
+}
+
+.schedule td {
+  font-size:26px
+}
+
+.schedule tbody th {
+  font-weight:500
+}
+
+.schedule-key {
+  display:flex;
+  justify-content:space-between;
+  margin-top:22px;
+  padding:0 10px;
+  align-items:center
+}
+
+.reception {
+  font-size:26px;
+  font-weight:500
+}
+
+.closed-days {
+  margin-top:20px;
+  padding-left:10px
+}
+
+.holiday-note {
+  margin-top:28px;
+  font-size:22px;
+  padding-left:5px
+}
+
+
+.home-hours {
+  padding-top:100px;
+  height:618px
+}
+
+.home-hours .section-heading {
+  margin-bottom:52px
+}
+
+.home-news {
+  height:533px;
+  padding-top:24px
+}
+
+.home-news .section-heading {
+  margin-bottom:44px
+}
+
+.home-news-layout {
+  display:grid;
+  grid-template-columns:292px 1fr;
+  gap:46px
+}
+
+.home-news-layout>img {
+  border-radius:8px;
+  width:292px;
+  height:312px;
+  object-position:center
+}
+
+.home-news-links {
+  position:relative
+}
+
+.news-list {
+  list-style:none;
+  position:relative
+}
+
+.news-list a {
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid #777
+}
+
+.home-news .news-list li {
+  margin-bottom:12px
+}
+
+.home-news .news-list a {
+  font-size:24px;
+  line-height:33px;
+  padding:0 10px
+}
+
+.home-news .align-right {
+  margin-top:48px
+}
+
+.news-decoration {
+  position:absolute;
+  width:134px;
+  height:134px;
+  border:4px solid #ebffdf;
+  left:-44px;
+  top:78px
+}
+
+.news-decoration:before,.news-decoration:after {
+  content:'';
+  position:absolute;
+  border:4px solid #ebffdf
+}
+
+.news-decoration:before {
+  width:104px;
+  height:48px;
+  left:65px;
+  top:118px
+}
+
+.news-decoration:after {
+  width:78px;
+  height:78px;
+  left:134px;
+  top:164px
+}
+
+.home-medical {
+  height:561px;
+  padding-top:38px
+}
+
+.home-medical .section-heading {
+  margin-bottom:48px
+}
+
+.medical-intro {
+  text-align:center;
+  line-height:28px;
+  margin-bottom:48px
+}
+
+.medical-grid {
+  width:878px;
+  margin:0 auto 16px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px
+}
+
+.medical-grid a {
+  height:114px;
+  padding:32px;
+  border:1px solid #d7e8e5;
+  border-radius:16px;
+  background:white;
+  font-size:32px;
+  white-space:nowrap
+}
+
+.home-about {
+  height:632px;
+  padding-top:136px
+}
+
+.home-about .section-heading {
+  margin-bottom:48px
+}
+
+.home-about-layout {
+  display:grid;
+  grid-template-columns:458px 1fr;
+  gap:42px
+}
+
+.home-about-layout img {
+  border-radius:8px
+}
+
+.home-about-layout p {
+  line-height:28px
+}
+
+.home-about-layout .align-right {
+  margin-top:32px
+}
+
+.home-staff {
+  padding-top:26px;
+  height:1849px
+}
+
+.home-staff .section-heading {
+  margin-bottom:54px
+}
+
+.staff-intro {
+  font-size:20px;
+  line-height:26px;
+  margin-bottom:32px
+}
+
+.staff-card {
+  display:grid;
+  grid-template-columns:238px 594px;
+  gap:40px;
+  position:relative;
+  height:300px;
+  margin-bottom:100px
+}
+
+.staff-card:nth-of-type(even) {
+  margin-left:76px
+}
+
+.staff-photo {
+  border-radius:10px;
+  width:238px;
+  height:300px;
+  object-position:center
+}
+
+.staff-info {
+  border:3px solid var(--teal);
+  border-radius:9px;
+  position:relative;
+  height:300px
+}
+
+.staff-info:before {
+  content:'';
+  position:absolute;
+  left:-44px;
+  top:-12px;
+  width:300px;
+  height:300px;
+  background:#e7faf3;
+  border-radius:50%;
+  z-index:0
+}
+
+.staff-info h3,.staff-info dl {
+  position:relative
+}
+
+.staff-info h3 {
+  font-size:36px;
+  line-height:46px;
+  white-space:nowrap
+}
+
+.staff-info dl {
+  margin-top:34px;
+  font-size:22px;
+  line-height:23px
+}
+
+.staff-info dl>div {
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:24px
+}
+
+.staff-info dt {
+  flex-shrink:0;
+  text-align:right
+}
+
+.staff-info dd {
+  width:470px
+}
+
+.staff-info dl>div:last-child {
+  margin-bottom:0
+}
+
+.home-greeting {
+  height:589px
+}
+
+.home-greeting .section-heading {
+  margin-bottom:44px
+}
+
+.greeting-layout {
+  display:grid;
+  grid-template-columns:324px 1fr;
+  gap:44px
+}
+
+.greeting-layout>img {
+  border-radius:8px;
+  object-position:44% center
+}
+
+.greeting-layout p {
+  font-size:20px;
+  line-height:25px
+}
+
+.greeting-layout .signature {
+  text-align:right;
+  margin-top:12px;
+  font-weight:500
+}
+
+.home-access {
+  height:527px;
+  padding-top:72px
+}
+
+.home-access .section-heading {
+  margin-bottom:64px
+}
+
+.home-access-layout {
+  display:grid;
+  grid-template-columns:306px 1fr;
+  gap:50px
+}
+
+.home-access-layout h3 {
+  font-size:36px;
+  text-align:center
+}
+
+.home-access-layout .location-list {
+  font-size:32px;
+  line-height:1.5;
+  list-style-position:inside
+}
+
+.home-access-layout .location-note {
+  font-size:20px;
+  text-align:center;
+  line-height:26px
+}
+
+
+.news-index {
+  padding-top:94px;
+  height:610px
+}
+
+.news-index .news-list li {
+  margin-bottom:30px
+}
+
+.news-index .news-list a {
+  font-size:32px;
+  line-height:50px;
+  padding:0 4px
+}
+
+.news-article {
+  height:388px;
+  padding-top:28px
+}
+
+.news-article h2 {
+  font-size:48px;
+  line-height:60px;
+  margin-bottom:60px
+}
+
+.news-article p {
+  font-size:20px;
+  line-height:32px
+}
+
+.news-article .align-right {
+  margin-top:44px
+}
+
+.news-detail-page .breadcrumbs {
+  height:80px
+}
+
+
+.medical-page .breadcrumbs {
+  width:882px
+}
+
+.medical-details {
+  width:958px;
+  margin:6px auto 0;
+  transform:translateX(38px);
+  padding-bottom:80px
+}
+
+.medical-row {
+  display:grid;
+  grid-template-columns:172px 1fr;
+  gap:44px;
+  min-height:164px;
+  margin-bottom:50px
+}
+
+.medical-row:last-child {
+  margin-bottom:0
+}
+
+.medical-row img {
+  width:172px;
+  height:164px;
+  object-position:center
+}
+
+.medical-row h2 {
+  font-size:48px;
+  line-height:70px;
+  border-left:10px solid var(--green);
+  padding-left:12px;
+  margin-bottom:22px;
+  white-space:nowrap
+}
+
+.medical-row p {
+  font-size:20px;
+  line-height:24px
+}
+
+
+.about-section .section-heading {
+  margin-bottom:36px
+}
+
+.about-section p {
+  line-height:30px
+}
+
+.about-1 {
+  height:336px;
+  padding-top:20px
+}
+
+.about-2 {
+  height:324px;
+  background:#f0f7f7;
+  padding-top:14px
+}
+
+.about-3 {
+  height:308px;
+  padding-top:90px
+}
+
+.about-4 {
+  height:436px;
+  padding-top:70px
+}
+
+.family-list {
+  list-style-position:inside;
+  margin-top:12px;
+  line-height:36px
+}
+
+.family-list strong {
+  color:var(--green);
+  font-size:24px
+}
+
+.family-list li::marker {
+  color:var(--green)
+}
+
+.about-5 {
+  height:230px;
+  padding-top:10px;
+  background:var(--mint)
+}
+
+.about-6 {
+  height:686px;
+  padding-top:90px
+}
+
+.policies {
+  list-style:none;
+  border:3px solid #b5e8be;
+  border-radius:8px;
+  padding:8px 10px;
+  margin-top:32px;
+  font-size:22px;
+  line-height:36px
+}
+
+.policies li {
+  padding:10px 0;
+  border-bottom:1px solid #ececec
+}
+
+.policies li:last-child {
+  border:0
+}
+
+.policies strong {
+  font-weight:700;
+  color:#277b60
+}
+
+.about-7 {
+  height:403px;
+  padding-top:90px
+}
+
+.about-7 .section-heading {
+  margin-bottom:38px
+}
+
+
+.access-hours {
+  padding-top:22px;
+  height:553px
+}
+
+.access-hours .section-heading {
+  font-size:64px;
+  margin-bottom:38px
+}
+
+.access-subjects {
+  height:714px;
+  padding-top:36px
+}
+
+.access-subjects .section-heading {
+  font-size:64px;
+  margin-bottom:42px
+}
+
+.subjects {
+  list-style:none;
+  margin-bottom:38px
+}
+
+.subjects li {
+  font-size:36px;
+  line-height:54px;
+  border-bottom:1px solid #eee;
+  margin-bottom:36px
+}
+
+.access-subjects>p {
+  font-size:26px
+}
+
+.access-location {
+  padding-top:34px;
+  padding-bottom:80px;
+  text-align:center
+}
+
+.access-location .section-heading {
+  font-size:64px;
+  margin-bottom:40px
+}
+
+.location-list {
+  font-size:36px;
+  line-height:52px;
+  list-style-position:inside;
+  text-align:left;
+  display:inline-block
+}
+
+.location-note {
+  font-size:26px;
+  line-height:40px;
+  margin-top:32px
+}
+
+.large-map {
+  width:744px;
+  height:560px;
+  object-fit:fill;
+  margin:38px auto 0
+}
+
+
+.faq-content {
+  padding-top:28px;
+  padding-bottom:83px
+}
+
+.faq-section .section-heading {
+  margin-bottom:50px
+}
+
+.faq-section {
+  margin-bottom:96px
+}
+
+.faq-section dl {
+  margin:0
+}
+
+.faq-item {
+  margin-bottom:54px
+}
+
+.faq-item:last-child {
+  margin-bottom:0
+}
+
+.faq-item dt {
+  color:var(--green);
+  font-size:28px;
+  font-weight:500;
+  margin-bottom:30px;
+  line-height:40px
+}
+
+.faq-item dd {
+  display:flex;
+  gap:8px;
+  align-items:baseline;
+  font-size:20px;
+  line-height:34px
+}
+
+.faq-item dd>span {
+  font-size:28px
+}
+
+.faq-item dd>p {
+  flex:1
+}
+
+.faq-end {
+  font-size:22px;
+  font-weight:500;
+  margin-top:-10px
+}
+
+
+/* 支給写真の被写体に合わせたトリミング位置 */
+.home-news-layout>img {
+  object-position:100% center
+}
+
+.home-about-layout img {
+  object-position:100% center
+}
+
+
+.staff-photo[src$='sato_taro.jpg'] {
+  object-position:74% center
+}
+
+.staff-photo[src$='suzuki_mari.jpg'] {
+  object-position:80% center
+}
+
+.staff-photo[src$='yamamoto_hana.jpg'] {
+  object-position:8% center
+}
+
+
+.greeting-layout>img {
+  object-position:80% center
+}
+
+
+.medical-row img[src$='medical_7.jpg'] {
+  object-position:100% center
+}
+
+.medical-row img[src$='medical_10.jpg'] {
+  object-position:0% center
+}
+
+.medical-row img[src$='medical_6.jpg'] {
+  object-position:85% center
+}
+
+.medical-row img[src$='medical_11.jpg'] {
+  object-position:0% center
+}
+
+.medical-row img[src$='medical_9.jpg'] {
+  object-position:15% center
+}
+
+.medical-row img[src$='medical_1.jpg'] {
+  object-position:100% center
+}
+
+
+.staff-info dl {
+  font-size:20px;
+  line-height:22px;
+  margin-top:32px
+}
+
+.staff-info dl>div {
+  margin-bottom:20px
+}
+
+.staff-info dd {
+  width:470px
+}
+
+.staff-intro {
+  font-size:18px
+}
+
+
+.medical-row {
+  margin-bottom:53px
+}
+
+.medical-details {
+  padding-bottom:79px
+}
+
+
+.access-location {
+  padding-top:26px;
+  padding-bottom:80px
+}
+
+.access-subjects {
+  height:680px
+}
+
+
+.faq-section {
+  margin-bottom:63px
+}
+
+.faq-item {
+  margin-bottom:45px
+}
+
+
+.map-frame {
+  width:744px;
+  height:560px;
+  position:relative;
+  overflow:hidden;
+  margin:38px auto 0
+}
+
+.map-frame img {
+  position:absolute;
+  width:1040px;
+  height:875px;
+  max-width:none;
+  left:-155px;
+  top:-235px;
+  object-fit:cover
+}
+
+
+.home-map-frame {
+  width:306px;
+  height:254px;
+  overflow:hidden;
+  position:relative
+}
+
+.home-map-frame img {
+  position:absolute;
+  width:428px;
+  height:360px;
+  max-width:none;
+  left:-64px;
+  top:-78px;
+  object-fit:cover
+}
+
+
