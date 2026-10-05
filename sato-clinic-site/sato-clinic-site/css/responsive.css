@@ -172,7 +172,8 @@
   .reception { grid-column: 1 / -1; grid-row: 4; padding-top: 10px; font-size: clamp(14px, 4.65vw, 20px); white-space: nowrap; }
   .holiday-note { grid-column: 1 / -1; grid-row: 5; padding: 10px 0 0; margin: 0; font-size: 16px; line-height: 24px; }
 
-  .home-news { height: auto; padding-top: 0; }
+  .home-hours { padding-bottom: 0; margin-bottom: 52px; }
+  .home-news { height: auto; padding-top: 0; padding-bottom: 0; }
   .home-news .section-heading { margin-bottom: 20px; }
   .home-news-layout { position: relative; display: grid; grid-template-columns: 45% 1fr; gap: 10px 4px; }
   .home-news-links { display: contents; }
@@ -189,7 +190,7 @@
   .home-news .news-list,
   .home-news-layout > img { position: relative; z-index: 1; }
 
-  .home-medical { height: auto; padding: 64px 0 52px; }
+  .home-medical { height: auto; padding: 52px 0; }
   .home-medical .section-heading { margin-bottom: 26px; }
   .medical-intro { text-align: left; font-size: 16px; line-height: 24px; margin-bottom: 20px; }
   .medical-grid { width: calc(100% - 32px); max-width: 720px; grid-template-columns: 1fr; gap: 24px; margin-bottom: 24px; }
@@ -214,11 +215,12 @@
   .home-about-layout p { font-size: 16px; line-height: 24px; }
   .home-about-layout .align-right { margin-top: 20px; }
 
-  .home-staff { height: auto; padding-top: 0; padding-bottom: 12px; }
+  .home-staff { height: auto; padding-top: 0; padding-bottom: 52px; }
   .home-staff .section-heading { margin-bottom: 24px; }
   .staff-intro { font-size: 16px; line-height: 22px; margin-bottom: 42px; }
   .staff-card,
   .staff-card:nth-of-type(even) { height: auto; margin-left: 0; margin-bottom: 48px; display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .home-staff .staff-card:last-of-type { margin-bottom: 0; }
   .staff-card::before { content: ''; position: absolute; left: 50%; top: -24px; transform: translateX(-50%); width: min(320px, 90%); aspect-ratio: 1; border-radius: 50%; background: #e7faf3; }
   .staff-photo { position: relative; width: 190px; height: 238px; border-radius: 8px 8px 0 0; }
   .staff-info { position: relative; width: 100%; height: auto; min-height: 300px; border-width: 2px; padding: 10px 10px 14px; background: white; }
@@ -228,13 +230,13 @@
   .staff-info dl > div { display: block; margin-bottom: 24px; }
   .staff-info dt { text-align: center; margin-bottom: 10px; font-weight: 500; }
   .staff-info dd { width: auto; }
-  .home-greeting { height: auto; padding-bottom: 52px; }
+  .home-greeting { height: auto; padding-top: 0; padding-bottom: 52px; }
   .home-greeting .section-heading { margin-bottom: 24px; }
   .greeting-layout { display: block; }
   .greeting-layout > img { display: none; }
   .greeting-layout p { font-size: 16px; line-height: 24px; margin-bottom: 4px; }
-  .greeting-layout .signature { margin-top: 12px; }
-  .home-gallery { padding: 48px 0 60px; }
+  .greeting-layout .signature { margin-top: 12px; margin-bottom: 0; }
+  .home-gallery { padding: 0 0 52px; }
   .home-gallery .section-heading { margin-bottom: 24px; }
   .gallery-viewport { width: calc(100% - 32px); }
   .gallery-track { gap: 12px; }

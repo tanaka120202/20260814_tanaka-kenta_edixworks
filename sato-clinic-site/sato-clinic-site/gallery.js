@@ -10,11 +10,18 @@
   if (count < 2) return;
 
   gallery.classList.add('gallery-initializing');
-  track.prepend(originals[count - 1].cloneNode(true));
-  track.append(originals[0].cloneNode(true));
+  const clonesBefore = originals.slice(-2).map((slide) => slide.cloneNode(true));
+  const clonesAfter = originals.slice(0, 2).map((slide) => slide.cloneNode(true));
+  [...clonesBefore, ...clonesAfter].forEach((slide) => {
+    slide.querySelector('img').loading = 'eager';
+  });
+  track.prepend(...clonesBefore);
+  track.append(...clonesAfter);
   const slides = [...track.children];
+  const firstIndex = 2;
+  const lastIndex = count + 1;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let index = 1;
+  let index = firstIndex;
   let timer;
   let transitionTimer;
   let settleTimer;
@@ -27,7 +34,7 @@
       slide.classList.toggle('is-next', slideIndex === index + 1);
       slide.setAttribute('aria-hidden', slideIndex === index ? 'false' : 'true');
     });
-    status.textContent = `${((index - 1 + count) % count) + 1} / ${count} 枚目`;
+    status.textContent = `${((index - firstIndex + count) % count) + 1} / ${count} 枚目`;
   }
 
   function offsetFor(slideIndex) {
@@ -52,7 +59,7 @@
     clearTimeout(timer);
     clearTimeout(settleTimer);
     if (reducedMotion) {
-      index = ((index - 1 + direction + count) % count) + 1;
+      index = ((index - firstIndex + direction + count) % count) + firstIndex;
       showCurrent();
       position(false);
       return;
@@ -70,8 +77,8 @@
     clearTimeout(transitionTimer);
     gallery.classList.add('gallery-initializing');
     slides[index].style.transformOrigin = '';
-    if (index === 0) index = count;
-    if (index === count + 1) index = 1;
+    if (index === firstIndex - 1) index = lastIndex;
+    if (index === lastIndex + 1) index = firstIndex;
     showCurrent();
     position(false);
     // Settle every slide before enabling transitions for the next move.
@@ -149,7 +156,7 @@
       clearTimeout(transitionTimer);
       gallery.classList.add('gallery-initializing');
       slides[index].style.transformOrigin = '';
-      index = ((index - 1 + count) % count) + 1;
+      index = ((index - firstIndex + count) % count) + firstIndex;
       animating = false;
       showCurrent();
       position(false);
