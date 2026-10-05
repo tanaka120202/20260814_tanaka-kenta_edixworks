@@ -163,6 +163,19 @@
   display: none;
 }
 
+/* デスクトップのヘッダー寸法は全ページ共通。 */
+@media (min-width: 1024px) {
+  .site-header {
+    width: 100%;
+    height: 244px;
+  }
+
+  .header-scenes .exterior,
+  .header-scenes .interior {
+    height: 100%;
+  }
+}
+
 /* PCとスマートフォンの間の幅でも横スクロールを防ぐ。 */
 @media (min-width: 1024px) and (max-width: 1439px) {
   body {
