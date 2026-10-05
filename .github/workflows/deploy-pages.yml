@@ -1,12 +1,9 @@
-name: Deploy sato-clinic-site to GitHub Pages
+name: Deploy websites to GitHub Pages
 
 on:
   push:
     branches:
       - main
-    paths:
-      - "sato-clinic-site/**"
-      - ".github/workflows/deploy-pages.yml"
 
   workflow_dispatch:
 
@@ -31,13 +28,33 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Prepare websites
+        shell: bash
+        run: |
+          mkdir -p public
+
+          find . \
+            -mindepth 2 \
+            -maxdepth 2 \
+            -type f \
+            -name "index.html" \
+            -print0 |
+          while IFS= read -r -d '' index_file; do
+            site_dir="$(dirname "$index_file")"
+            site_name="$(basename "$site_dir")"
+
+            echo "Publishing: $site_name"
+
+            cp -a "$site_dir" "public/$site_name"
+          done
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload website
+      - name: Upload websites
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./sato-clinic-site
+          path: ./public
 
       - name: Deploy to GitHub Pages
         id: deployment
