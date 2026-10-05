@@ -486,7 +486,7 @@
     margin-bottom: 24px;
   }
 
-  .medical-grid a {
+  .medical-grid .medical-item {
     height: auto;
     min-height: 90px;
     display: flex;
@@ -1161,7 +1161,7 @@
     padding-inline: 6px;
   }
 
-  .medical-grid a {
+  .medical-grid .medical-item {
     font-size: 21px;
     padding-inline: 22px;
   }
