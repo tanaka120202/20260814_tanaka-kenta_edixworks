@@ -5,6 +5,65 @@
   display: none;
 }
 
+.footer-navigation {
+  padding: 20px 32px;
+  border-top: 1px solid rgba(54, 92, 72, .18);
+}
+
+.footer-navigation ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-navigation a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 4px 8px;
+  color: #365c48;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.footer-navigation a:hover,
+.footer-navigation a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer-navigation a:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (max-width: 1023px) {
+  .footer-navigation {
+    padding: 16px;
+  }
+
+  .footer-navigation ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 8px;
+    text-align: center;
+  }
+
+  .footer-navigation li:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-navigation a {
+    justify-content: center;
+    font-size: 14px;
+  }
+}
+
 /* トップページの案内ボタンは、表示環境ごとに同じ寸法にする。 */
 .home main a.button {
   display: inline-flex;
