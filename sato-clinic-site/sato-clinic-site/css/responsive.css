@@ -83,7 +83,13 @@
   }
 
   /* details/summaryを使い、JavaScriptなしでマウス・タッチ・キーボードに対応。 */
-  .mobile-menu { display: block; position: absolute; right: 0; top: 0; z-index: 30; }
+  .mobile-menu { display: block; position: fixed; right: 0; top: 0; z-index: 30; }
+  .mobile-menu[open] {
+    width: min(264px, calc(100vw - 16px));
+    height: 100vh;
+    height: 100dvh;
+    background: linear-gradient(to right, rgb(185 228 188 / 0), rgb(185 228 188 / .8) 40px);
+  }
   .mobile-menu > summary {
     width: 44px;
     height: 44px;
@@ -91,6 +97,8 @@
     place-items: center;
     cursor: pointer;
     list-style: none;
+    margin-left: auto;
+    background: #b9e4bc;
   }
   .mobile-menu > summary::-webkit-details-marker { display: none; }
   .mobile-menu > summary::marker { content: ''; }
@@ -109,15 +117,15 @@
     position: absolute;
     top: 44px;
     right: 0;
-    width: min(264px, calc(100vw - 16px));
+    width: 100%;
+    height: calc(100% - 44px);
+    box-sizing: border-box;
     padding: 38px 0;
-    background: #0a944c;
+    background: transparent;
     display: flex;
     flex-direction: column;
-    max-height: min(726px, calc(100dvh - 44px));
     overflow-y: auto;
     overscroll-behavior: contain;
-    box-shadow: 0 8px 20px rgb(0 0 0 / .16);
   }
   .mobile-navigation a {
     display: grid;
@@ -134,7 +142,7 @@
   }
   .mobile-navigation a:nth-last-child(2) { font-size: 28px; }
   .mobile-navigation a:hover,
-  .mobile-navigation a:focus-visible { background: #087a40; }
+  .mobile-navigation a:focus-visible { background: linear-gradient(to right, rgb(63 108 89 / 0), rgb(63 108 89 / .12) 40px); }
 
   .page-title { height: auto; min-height: 46px; }
   .page-title h1 { font-size: clamp(26px, 7.96vw, 32px); line-height: 1.45; }
@@ -355,7 +363,7 @@
   .mobile-navigation a {
     min-height: 64px;
     font-size: clamp(20px, 5.5vw, 28px);
-    color: #fff;
+    color: #3f6c59;
     -webkit-text-stroke: 0;
     white-space: normal;
     text-align: center;
