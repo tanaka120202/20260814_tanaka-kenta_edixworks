@@ -5,6 +5,10 @@
   const viewport = gallery.querySelector('.gallery-viewport');
   const track = gallery.querySelector('.gallery-track');
   const status = gallery.querySelector('.gallery-status');
+  const lightbox = document.querySelector('.gallery-lightbox');
+  const enlargedImage = lightbox.querySelector('.gallery-lightbox-image');
+  const caption = lightbox.querySelector('#gallery-lightbox-caption');
+  let previousFocus;
   const originals = [...track.children];
   const count = originals.length;
   if (count < 2) return;
@@ -26,6 +30,9 @@
   let transitionTimer;
   let settleTimer;
   let animating = false;
+  let pendingImage = null;
+  let suppressClick = false;
+  let backdropPressed = false;
 
   function showCurrent() {
     slides.forEach((slide, slideIndex) => {
@@ -33,6 +40,11 @@
       slide.classList.toggle('is-prev', slideIndex === index - 1);
       slide.classList.toggle('is-next', slideIndex === index + 1);
       slide.setAttribute('aria-hidden', slideIndex === index ? 'false' : 'true');
+      const image = slide.querySelector('img');
+      image.tabIndex = slideIndex === index ? 0 : -1;
+      image.setAttribute('role', 'button');
+      image.setAttribute('aria-label', `${image.alt}を拡大表示`);
+      image.setAttribute('aria-haspopup', 'dialog');
     });
     status.textContent = `${((index - firstIndex + count) % count) + 1} / ${count} 枚目`;
   }
@@ -51,11 +63,11 @@
 
   function scheduleNext() {
     clearTimeout(timer);
-    if (!reducedMotion && !document.hidden) timer = setTimeout(() => move(1), 5000);
+    if (!reducedMotion && !document.hidden && !lightbox.open) timer = setTimeout(() => move(1), 5000);
   }
 
   function move(direction) {
-    if (animating) return;
+    if (animating || lightbox.open) return;
     clearTimeout(timer);
     clearTimeout(settleTimer);
     if (reducedMotion) {
@@ -93,15 +105,93 @@
   });
 
   viewport.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openLightbox(event.target.closest('.gallery-slide img') || slides[index].querySelector('img'));
+      return;
+    }
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       event.preventDefault();
       move(event.key === 'ArrowLeft' ? -1 : 1);
     }
   });
 
+  function centerLightbox() {
+    const visible = window.visualViewport;
+    lightbox.style.setProperty('--lightbox-left', `${visible?.offsetLeft ?? 0}px`);
+    lightbox.style.setProperty('--lightbox-top', `${visible?.offsetTop ?? 0}px`);
+    lightbox.style.setProperty('--lightbox-width', `${visible?.width ?? window.innerWidth}px`);
+    lightbox.style.setProperty('--lightbox-height', `${visible?.height ?? window.innerHeight}px`);
+  }
+  let centerFrame;
+  function requestCenterLightbox() {
+    if (!lightbox.open) return;
+    cancelAnimationFrame(centerFrame);
+    centerFrame = requestAnimationFrame(centerLightbox);
+  }
+  window.addEventListener('resize', requestCenterLightbox);
+  window.visualViewport?.addEventListener('resize', requestCenterLightbox);
+  window.visualViewport?.addEventListener('scroll', requestCenterLightbox);
+
+  function openLightbox(image) {
+    if (lightbox.open) return;
+    if (animating) finishMove();
+    clearTimeout(timer);
+    clearTimeout(settleTimer);
+    previousFocus = viewport.contains(document.activeElement) ? document.activeElement : viewport;
+    enlargedImage.src = image.currentSrc || image.src;
+    enlargedImage.alt = image.alt;
+    caption.textContent = image.alt;
+    backdropPressed = false;
+    document.documentElement.classList.add('gallery-lightbox-open');
+    centerLightbox();
+    lightbox.showModal();
+    requestCenterLightbox();
+  }
+
+  function restoreGallery() {
+    if (lightbox.open) return;
+    if (document.documentElement.classList.contains('gallery-lightbox-open')) {
+      document.documentElement.classList.remove('gallery-lightbox-open');
+      scheduleNext();
+    }
+    previousFocus?.focus({ preventScroll: true });
+  }
+  function closeLightbox() {
+    lightbox.close();
+    restoreGallery();
+  }
+  lightbox.querySelector('.gallery-lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('pointerdown', (event) => {
+    backdropPressed = event.target === lightbox;
+  });
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox && backdropPressed) closeLightbox();
+    backdropPressed = false;
+  });
+  lightbox.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    closeLightbox();
+  });
+  lightbox.addEventListener('close', restoreGallery);
+  // pointerupで開くと、続くクリックがダイアログ背景に届くことがある。
+  // タップ完了後のclickで開き、ドラッグに続くclickは無視する。
+  viewport.addEventListener('click', (event) => {
+    if (event.detail !== 0 && suppressClick) {
+      pendingImage = null;
+      return;
+    }
+    const image = event.target.closest('.gallery-slide img') || pendingImage;
+    pendingImage = null;
+    suppressClick = false;
+    if (image) openLightbox(image);
+  });
+
   let drag = null;
   viewport.addEventListener('dragstart', (event) => event.preventDefault());
   viewport.addEventListener('pointerdown', (event) => {
+    pendingImage = null;
+    suppressClick = false;
     if (animating || (event.pointerType === 'mouse' && event.button !== 0)) return;
     clearTimeout(timer);
     clearTimeout(settleTimer);
@@ -111,6 +201,7 @@
       y: event.clientY,
       time: performance.now(),
       offset: offsetFor(index),
+      image: event.target.closest('.gallery-slide img'),
       moved: false
     };
     viewport.classList.add('is-dragging');
@@ -133,6 +224,15 @@
     const flick = Math.abs(dx) >= 20 && performance.now() - drag.time < 250;
     const switchSlide = !canceled && drag.moved && Math.abs(dx) > Math.abs(dy) && (Math.abs(dx) >= 40 || flick);
     const wasMoved = drag.moved;
+    const tappedImage = !canceled && !wasMoved && Math.abs(dx) < 6 && Math.abs(dy) < 6 ? drag.image : null;
+    pendingImage = tappedImage;
+    suppressClick = !tappedImage;
+    // タッチ後にclickが生成されない場合も、pointerupの処理が終わってから開く。
+    if (tappedImage) setTimeout(() => {
+      if (pendingImage !== tappedImage || lightbox.open) return;
+      pendingImage = null;
+      openLightbox(tappedImage);
+    }, 0);
     drag = null;
     viewport.classList.remove('is-dragging');
     if (switchSlide) move(dx > 0 ? -1 : 1);
