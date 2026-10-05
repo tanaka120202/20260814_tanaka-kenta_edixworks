@@ -375,7 +375,30 @@ ol {
 
 .home-hours {
   padding-top: 100px;
-  height: 618px
+  padding-bottom: 60px;
+  min-height: 618px;
+  height: auto
+}
+
+.home-reservation-guide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 28px;
+  padding: 24px;
+  border-radius: 8px;
+  background: var(--mint)
+}
+
+.home-reservation-guide p {
+  font-size: 18px;
+  line-height: 1.8
+}
+
+.home-reservation-guide .button {
+  flex-shrink: 0;
+
 }
 
 .home-hours .section-heading {

@@ -20,7 +20,7 @@ medical.html：診療内容
 about.html：当院について
 access.html：診療時間・所在地
 faq.html：よくあるご質問
-reservation.html：当日分の受付番号を取得するダミーフォーム
+reservation.html：当日受付フォームと受付状況のデザイン見本
 css/style.css：全ページ共通のスタイル
 css/responsive.css：スマートフォン・タブレット向けのスタイル
 assets/：支給された画像とフォント
@@ -39,7 +39,7 @@ HTML・CSS・JavaScript・画像・フォントとワークフローを、新規
 ワークフローはsato-clinic-siteフォルダの中身を公開するため、公開URLに/sato-clinic-site/は付けません。
 HTML・CSSのリンクは相対パスなので、GitHub Pagesのリポジトリ配下でも参照できます。
 Actionsの実行成功後、github-pages環境に表示されるURLで確認してください。
-当日受付フォームはブラウザー内のサンプル番号を発行するだけで、実際の受付や個人情報の送信は行いません。
+当日受付ページはデザインのみです。受付番号・案内中の番号・残りの順番は固定の表示例で、番号発行・状況更新・入力内容の送信は行いません。
 公式手順：https://docs.github.com/ja/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
 
 本サイトは職業訓練の学習用に制作した架空のサンプルサイトです。掲載している医院・人物・連絡先・所在地はすべて架空であり、実在のものとは関係ありません。
