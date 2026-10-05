@@ -237,7 +237,7 @@
     text-decoration: none;
   }
 
-  .mobile-navigation a:nth-last-child(2) {
+  .mobile-navigation a[href="./access.html"] {
     font-size: 28px;
   }
 
@@ -1262,7 +1262,7 @@
     text-align: center;
   }
 
-  .mobile-navigation a:nth-last-child(2) {
+  .mobile-navigation a[href="./access.html"] {
     font-size: clamp(20px, 5vw, 26px);
   }
 
